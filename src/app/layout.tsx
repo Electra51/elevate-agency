@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Navbar from "@/components/common/Navbar";
 import { amilly, clashDisplay } from "./fonts";
 import "./globals.css";
 
@@ -17,7 +18,10 @@ export default function RootLayout({
       lang="en"
       className={`${clashDisplay.variable} ${amilly.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+      </body>
     </html>
   );
 }

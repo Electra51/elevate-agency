@@ -3,6 +3,9 @@
 @theme inline {
   --font-sans: var(--font-clash);
   --font-signature: var(--font-amilly);
+  /* color */
+  --color-primary: #4504df;
+  --color-secondary: #601ff9;
 }
 @utility font-signature {
   font-family: var(--font-signature);
