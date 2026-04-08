@@ -1,8 +1,7 @@
 "use client";
 
-import "swiper/css";
-import { Autoplay, FreeMode } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
 
 const items = [
   "BRANDING",
@@ -31,35 +30,39 @@ const Star = () => (
 );
 
 export default function MarqueeBanner() {
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = marqueeRef.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+      gsap.to(".marquee-track", {
+        xPercent: -50,
+        repeat: -1,
+        duration: 20,
+        ease: "linear",
+      });
+    }, el);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="w-full bg-primary py-3 overflow-hidden border border-primary">
-      <Swiper
-        modules={[Autoplay, FreeMode]}
-        slidesPerView="auto"
-        loop={true}
-        freeMode={true}
-        speed={4000}
-        autoplay={{
-          delay: 0,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: false,
-        }}
-        allowTouchMove={false}
-        className="transition-none!"
-      >
-        {items.map((item, index) => (
-          <SwiperSlide key={index} style={{ width: "auto" }}>
-            <div className="flex items-center gap-7 px-6">
-              <span
-                className={`text-white text-[30px] tracking-widest font-semibold whitespace-nowrap`}
-              >
-                {item}
-              </span>
-              <Star />
-            </div>
-          </SwiperSlide>
+    <div
+      ref={marqueeRef}
+      className="w-full bg-primary py-3 overflow-hidden border border-primary"
+    >
+      <div className="marquee-track flex w-max">
+        {[...items, ...items].map((item, index) => (
+          <div key={index} className="flex items-center gap-7 px-6">
+            <span className="text-white text-[20px] sm:text-[24px] md:text-[30px] tracking-widest font-semibold whitespace-nowrap">
+              {item}
+            </span>
+            <Star />
+          </div>
         ))}
-      </Swiper>
+      </div>
     </div>
   );
 }
