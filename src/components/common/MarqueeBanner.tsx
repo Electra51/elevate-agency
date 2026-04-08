@@ -32,7 +32,7 @@ const Star = () => (
 
 export default function MarqueeBanner() {
   return (
-    <div className="w-full bg-primary py-3 overflow-hidden">
+    <div className="w-full bg-primary py-3 overflow-hidden border border-primary">
       <Swiper
         modules={[Autoplay, FreeMode]}
         slidesPerView="auto"
