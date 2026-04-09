@@ -1,0 +1,12 @@
+<svg width="39" height="80" viewBox="0 0 39 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#paint0_angular_2076_478_clip_path)" data-figma-skip-parse="true"><g transform="matrix(0 0.0225 -0.0015 0 14.5 43.5)"><foreignObject x="-1666.67" y="-1666.67" width="3333.33" height="3333.33"><div xmlns="http://www.w3.org/1999/xhtml" style="background:conic-gradient(from 90deg,rgba(115, 115, 115, 1) 0deg,rgba(253, 253, 254, 1) 216.346deg,rgba(115, 115, 115, 1) 360deg);height:100%;width:100%;opacity:1"></div></foreignObject></g></g><rect x="13" y="21" width="3" height="45" data-figma-gradient-fill="{&#34;type&#34;:&#34;GRADIENT_ANGULAR&#34;,&#34;stops&#34;:[{&#34;color&#34;:{&#34;r&#34;:0.99215686321258545,&#34;g&#34;:0.99215686321258545,&#34;b&#34;:0.99607843160629272,&#34;a&#34;:1.0},&#34;position&#34;:0.60096156597137451},{&#34;color&#34;:{&#34;r&#34;:0.45098039507865906,&#34;g&#34;:0.45098039507865906,&#34;b&#34;:0.45098039507865906,&#34;a&#34;:1.0},&#34;position&#34;:1.0}],&#34;stopsVar&#34;:[{&#34;color&#34;:{&#34;r&#34;:0.99215686321258545,&#34;g&#34;:0.99215686321258545,&#34;b&#34;:0.99607843160629272,&#34;a&#34;:1.0},&#34;position&#34;:0.60096156597137451},{&#34;color&#34;:{&#34;r&#34;:0.45098039507865906,&#34;g&#34;:0.45098039507865906,&#34;b&#34;:0.45098039507865906,&#34;a&#34;:1.0},&#34;position&#34;:1.0}],&#34;transform&#34;:{&#34;m00&#34;:1.8369702788777518e-16,&#34;m01&#34;:-3.0,&#34;m02&#34;:16.0,&#34;m10&#34;:45.0,&#34;m11&#34;:2.7554553521421787e-15,&#34;m12&#34;:21.0},&#34;opacity&#34;:1.0,&#34;blendMode&#34;:&#34;NORMAL&#34;,&#34;visible&#34;:true}"/>
+<path d="M39 14.4444L13 0V26L39 14.4444Z" fill="url(#paint1_linear_2076_478)"/>
+<circle cx="14" cy="66" r="13.85" fill="#D9D9D9" stroke="#FDFDFE" stroke-width="0.3"/>
+<path d="M14.74 72.2C10.82 72.2 8.7 70.66 8.7 67.96V67.74H10.9V67.96C10.9 69.54 12.1 70.24 14.78 70.24C17.18 70.24 18.28 69.52 18.28 67.64C18.28 65.8 17.22 65.1 14.78 65.1C12.86 65.1 11.74 65.42 10.98 66.1L10.84 66.06V66.1L8.84 65.96L9.56 58.6H19.9V60.54H11.44L10.96 64.92L11.12 64.94C11.8 64.2 13.36 63.38 15.58 63.38C18.7 63.38 20.54 64.88 20.54 67.64C20.54 70.42 18.52 72.2 14.74 72.2Z" fill="#212121"/>
+<defs>
+<clipPath id="paint0_angular_2076_478_clip_path"><rect x="13" y="21" width="3" height="45"/></clipPath><linearGradient id="paint1_linear_2076_478" x1="29.2985" y1="0" x2="29.2985" y2="26" gradientUnits="userSpaceOnUse">
+<stop offset="0.466346" stop-color="#0CE7FF"/>
+<stop offset="1" stop-color="#4504DF"/>
+</linearGradient>
+</defs>
+</svg>

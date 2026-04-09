@@ -6,13 +6,23 @@ export default function SlideOne() {
   return (
     <div className="relative w-screen h-screen flex bg-linear-to-br from-[#6b37e4] to-[#713FE7] overflow-hidden">
       {/* VECTOR LINE */}
-      <Image
-        src="/images/brandingImage/Vector1.png"
-        alt="vector"
-        width={8452}
-        height={636}
-        className="absolute top-82 xl:top-44 2xl:top-3 right-0 opacity-80"
-      />
+
+      <svg
+        width="1439"
+        height="472"
+        viewBox="0 0 1439 472"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="vector-line absolute top-82 xl:top-83.75 2xl:top-118px 2xl:w-[3000px] 2xl:right-121 opacity-80"
+        // className="vector-line absolute top-82 xl:top-83.75 right-0 w-[120vw] max-w-none opacity-80"
+      >
+        <path
+          className="vector-line"
+          d="M0.0996094 470.566L798.1 309.066L1348.6 0.566406L1438.1 44.5664"
+          stroke="#FFF9F9"
+          strokeOpacity="0.25"
+        />
+      </svg>
 
       <div
         className="absolute inset-0 opacity-[0.06]"
@@ -24,13 +34,14 @@ export default function SlideOne() {
       />
 
       {/* LEFT */}
+
       <div className="w-1/2 flex flex-col justify-center 2xl:pl-87.5 xl:pl-28 text-white z-10">
-        <h1 className="text-[64px] font-bold leading-tight mb-6">
+        <h1 className="slide-title text-[64px] font-bold leading-tight mb-6">
           Digital Presence <br /> & Branding
         </h1>
 
-        <div className="flex gap-4 max-w-lg">
-          <div className="w-0.75 bg-white mt-2"></div>
+        <div className="slide-desc flex gap-4 max-w-lg">
+          <div className="w-3 bg-white mt-2"></div>
           <p className="text-lg text-white/90">
             We analyze your market, study your competitors, and craft a
             data-backed blueprint tailored specifically to your business goals.
@@ -40,15 +51,8 @@ export default function SlideOne() {
 
       {/* RIGHT */}
       <div className="w-1/2 relative">
-        <div className="absolute top-64 right-40 xl:right-20 w-124.75">
+        <div className=" slide-visual absolute top-64 right-40 xl:right-20 w-124.75">
           {/* IMAGE fb */}
-          {/* <Image
-                        src="/images/brandingImage/image1.png"
-                        alt="fb"
-                        width={621}
-                        height={417}
-                        className="relative z-0"
-                    /> */}
 
           <Image
             src="/images/brandingImage/image1.png"
@@ -69,23 +73,17 @@ export default function SlideOne() {
           alt="step"
           width={39}
           height={80}
-          className="absolute top-106 xl:top-69 right-15 xl:right-14 2xl:right-22 2xl:top-42 z-20"
+          className="step-image absolute top-106 xl:top-69 right-15 xl:right-14 2xl:right-22 2xl:top-42 z-20"
         />
 
         {/* STATUE */}
-        {/* <Image
-          src="/images/brandingImage/statue.png"
-          alt="statue"
-          width={645}
-          height={622}
-          className="absolute bottom-0 right-0 z-30"
-        /> */}
+
         <Image
           src="/images/brandingImage/statue.png"
           alt="statue"
           width={645}
           height={622}
-          className="absolute bottom-0 right-0 z-30 xl:w-[554px] xl:h-[517px] 2xl:w-[645px] h-[622px] "
+          className="statue-image absolute bottom-0 right-0 z-30 xl:w-138.5 xl:h-129.25 xl:-right-22.5 2xl:w-161.25 h-155.5 "
         />
       </div>
     </div>
