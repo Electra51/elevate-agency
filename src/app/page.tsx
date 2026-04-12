@@ -1,5 +1,7 @@
 import MarqueeBanner from "@/components/common/MarqueeBanner";
 import About from "@/components/ui/homepage/About";
+import Connect from "@/components/ui/homepage/Connect";
+import Design from "@/components/ui/homepage/Design";
 import Faq from "@/components/ui/homepage/Faq";
 import Hero from "@/components/ui/homepage/Hero";
 import HorizontalScrollSection from "@/components/ui/homepage/HorizontalScrollSection/HorizontalScrollSection";
@@ -13,9 +15,12 @@ export default function Home() {
       <MarqueeBanner />
       <Service />
       <HorizontalScrollSection />
+      <Design />
       <About />
       <Faq />
       <Pricing />
+
+      <Connect />
     </div>
   );
 }

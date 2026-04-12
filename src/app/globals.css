@@ -13,3 +13,51 @@
 body {
   font-family: var(--font-sans);
 }
+
+.text-gradient {
+  @apply bg-clip-text text-transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.curved-swiper {
+  --v-offset: 60px;
+  --curve-height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* TOP CURVE */
+.curved-swiper::before {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  width: calc(100vw + 2 * var(--v-offset));
+  height: var(--curve-height);
+  background: white;
+  border-radius: 45%;
+  top: calc(-0.7 * var(--curve-height));
+  left: calc(-1 * var(--v-offset));
+}
+
+/* BOTTOM CURVE */
+.curved-swiper::after {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  width: calc(100vw + 2 * var(--v-offset));
+  height: var(--curve-height);
+  background: white;
+  border-radius: 45%;
+  bottom: calc(-0.7 * var(--curve-height));
+  left: calc(-1 * var(--v-offset));
+}
+
+/* align slides center */
+/* .swiper-wrapper {
+  display: flex;
+  align-items: center;
+} */
+
+/* .slider-track > div {
+  transform-origin: center bottom;
+} */
