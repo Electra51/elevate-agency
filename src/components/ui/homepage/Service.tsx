@@ -56,7 +56,6 @@ const Service = () => {
         className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-5"
       >
         {services.map((item, index) => {
-          console.log("item", item);
           return (
             <div
               key={index}
