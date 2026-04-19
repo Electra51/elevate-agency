@@ -49,7 +49,7 @@ export default function Hero() {
     >
       {/* ── Layer 1: Grid texture ── */}
       {/* ── Layer 1: Grid texture — center visible, edges fade ── */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(rgba(96,31,249,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(96,31,249,0.18)_1px,transparent_1px)] bg-[size:45px_45px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black_30%,transparent_80%)]" />
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(rgba(96,31,249,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(96,31,249,0.18)_1px,transparent_1px)] bg-size-[45px_45px] mask-[radial-gradient(ellipse_60%_60%_at_50%_50%,black_30%,transparent_80%)]" />
 
       {/* ── Layer 2: Center blur glow #4504DF ── */}
       {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[320px] sm:w-[640px] sm:h-[380px] lg:w-[820px] lg:h-[420px] bg-[#4504DF] rounded-full blur-[160px] opacity-40 z-0 pointer-events-none" /> */}
@@ -57,10 +57,10 @@ export default function Hero() {
       <div
         className="absolute top-1/2 left-1/2 
 -translate-x-1/2 -translate-y-1/2 
-w-[480px] h-[320px] 
-sm:w-[640px] sm:h-[380px] 
-lg:w-[876px] lg:h-[384px] 
-2xl:w-[1100px] 2xl:h-[384px] 
+w-120 h-80 
+sm:w-160 sm:h-95 
+lg:w-219 lg:h-96 
+2xl:w-275 2xl:h-96 
 bg-[#4504DF]
 rounded-[100%] 
 blur-[90px] 
@@ -135,7 +135,7 @@ z-10 pointer-events-none"
         </div>
       </div> */}
       {/* ── Statue ── */}
-      <div className="hero-statue absolute z-10 bottom-0 right-0 w-78 sm:w-111.75 md:w-109.5 lg:w-[403px] h-65 sm:h-80 lg:h-[549px]">
+      <div className="hero-statue absolute z-10 bottom-0 right-0 w-78 sm:w-111.75 md:w-109.5 lg:w-100.75 h-65 sm:h-80 lg:h-137.25">
         <Image
           src="/images/ourstory/heroImage.png"
           alt="Statue"

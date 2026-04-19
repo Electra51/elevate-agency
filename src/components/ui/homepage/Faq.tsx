@@ -50,7 +50,8 @@ const Faq = () => {
             src="/images/faq.png"
             alt="Abstract colorful 3D art"
             fill
-            className="object-fit object-center"
+            sizes="288px"
+            className="object-cover object-center"
             priority
           />
         </div>

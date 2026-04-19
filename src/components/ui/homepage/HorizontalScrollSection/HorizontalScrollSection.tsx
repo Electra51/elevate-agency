@@ -36,9 +36,10 @@ export default function HorizontalScrollSection() {
           trigger: section,
           start: "top top",
           end: () => `+=${scrollDistance}`,
-          scrub: 1,
+          scrub: 1.2,
           pin: true,
           anticipatePin: 1,
+          invalidateOnRefresh: true,
         },
       });
 
@@ -51,12 +52,7 @@ export default function HorizontalScrollSection() {
         const visual = slide.querySelector(".slide-visual");
         const step = slide.querySelector(".step-image");
         const statue = slide.querySelector(".statue-image");
-        const line = slide.querySelector(
-          ".vector-line",
-        ) as SVGPathElement | null;
-        const path = slide.querySelector(
-          "path.vector-line",
-        ) as SVGPathElement | null;
+        const vectorLines = slide.querySelectorAll<SVGPathElement>(".vector-line");
 
         //  Skip invalid slides completely
         if (!title || !desc) return;
@@ -64,38 +60,38 @@ export default function HorizontalScrollSection() {
         // ---------------------------
         //  SVG line animation
         // ---------------------------
-        if (line) {
-          const length = line.getTotalLength?.() ?? 0;
+        vectorLines.forEach((vectorLine) => {
+          const length = vectorLine.getTotalLength?.() ?? 0;
+          if (length > 0) {
+            gsap.set(vectorLine, {
+              strokeDasharray: length,
+              strokeDashoffset: length,
+            });
 
-          gsap.set(line, {
-            strokeDasharray: length,
-            strokeDashoffset: -length,
-          });
+            gsap.to(vectorLine, {
+              strokeDashoffset: 0,
+              ease: "power1.inOut",
+              scrollTrigger: {
+                trigger: slide,
+                containerAnimation: horizontalAnim,
+                start: "left center",
+                end: "right center",
+                scrub: 1.5,
+              },
+            });
+          }
+        });
 
-          gsap.to(line, {
-            strokeDashoffset: 0,
-            ease: "none",
-            scrollTrigger: {
-              trigger: slide,
-              containerAnimation: horizontalAnim,
-              start: "left center",
-              end: "right center",
-              scrub: true,
-            },
-          });
-        }
+        // ---------------------------
+        //  VECTOR IMAGE ANIMATION (clip-path drawing)
+        // ---------------------------
+        const vectorImg = slide.querySelector("img[alt='vector']");
+        if (vectorImg) {
+          gsap.set(vectorImg, { clipPath: "inset(0 100% 0 0)" });
 
-        if (path) {
-          const length = path.getTotalLength();
-
-          gsap.set(path, {
-            strokeDasharray: length,
-            strokeDashoffset: length,
-          });
-
-          gsap.to(path, {
-            strokeDashoffset: 0,
-            ease: "power1.inOut",
+          gsap.to(vectorImg, {
+            clipPath: "inset(0 0% 0 0)",
+            ease: "none", // Linear drawing feels best
             scrollTrigger: {
               trigger: slide,
               containerAnimation: horizontalAnim,
@@ -227,7 +223,7 @@ export default function HorizontalScrollSection() {
         // ---------------------------
         //  Visual scale animation
         // ---------------------------
-        if (visual) {
+        if (visual && !statue) {
           gsap.set(visual, { scale: 0.85, opacity: 0 });
 
           gsap.to(visual, {

@@ -55,21 +55,21 @@ export default function HowWeWork() {
             {/* Step card */}
             <div className="flex flex-col flex-1">
               {/* Icon circle */}
-              <div className="w-[72px] h-[72px] rounded-full bg-[#5533FF] flex items-center justify-center mb-5 shrink-0">
+              <div className="w-18 h-18 rounded-full bg-[#5533FF] flex items-center justify-center mb-5 shrink-0">
                 <step.icon className="w-8 h-8 text-white" strokeWidth={1.8} />
               </div>
               <h3 className="text-[16px] font-bold text-black mb-2.5 leading-snug">
                 {step.title}
               </h3>
-              <p className="text-[13.5px] leading-[1.65] text-neutral-500 max-w-[200px]">
+              <p className="text-[13.5px] leading-[1.65] text-neutral-500 max-w-50">
                 {step.desc}
               </p>
             </div>
 
             {/* Arrow between steps */}
             {i < steps.length - 1 && (
-              <div className="flex items-center pt-[34px] w-20 shrink-0">
-                <div className="relative w-full h-[2px]">
+              <div className="flex items-center pt-8.5 w-20 shrink-0">
+                <div className="relative w-full h-0.5">
                   <div className="absolute inset-0 mr-3 bg-[#5533FF]" />
                   <div
                     className="absolute right-0 top-1/2 -translate-y-1/2"

@@ -7,22 +7,13 @@ export default function SlideOne() {
     <div className="relative w-screen h-screen flex bg-linear-to-br from-[#6b37e4] to-[#713FE7] overflow-hidden">
       {/* VECTOR LINE */}
 
-      <svg
-        width="1439"
-        height="472"
-        viewBox="0 0 1439 472"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="vector-line absolute top-82 xl:top-83.75 2xl:top-118px 2xl:w-[3000px] 2xl:right-121 opacity-80"
-        // className="vector-line absolute top-82 xl:top-83.75 right-0 w-[120vw] max-w-none opacity-80"
-      >
-        <path
-          className="vector-line"
-          d="M0.0996094 470.566L798.1 309.066L1348.6 0.566406L1438.1 44.5664"
-          stroke="#FFF9F9"
-          strokeOpacity="0.25"
-        />
-      </svg>
+      <Image
+        src="/images/brandingImage/Vector1.svg"
+        alt="vector"
+        width={1439}
+        height={472}
+        className="vector-line absolute top-82 xl:top-53 right-0 w-[120vw] max-w-none opacity-80"
+      />
 
       <div
         className="absolute inset-0 opacity-[0.06]"
@@ -61,6 +52,7 @@ export default function SlideOne() {
             height={417}
             priority
             className="relative z-0 w-full h-auto"
+            style={{ width: "100%", height: "auto" }}
           />
 
           {/* WHITE BLUR CIRCLE */}
@@ -76,15 +68,19 @@ export default function SlideOne() {
           className="step-image absolute top-106 xl:top-69 right-15 xl:right-14 2xl:right-22 2xl:top-42 z-20"
         />
 
-        {/* STATUE */}
-
-        <Image
-          src="/images/brandingImage/statue.png"
-          alt="statue"
-          width={645}
-          height={622}
-          className="statue-image absolute bottom-0 right-0 z-30 xl:w-138.5 xl:h-129.25 xl:-right-22.5 2xl:w-161.25 h-155.5 "
-        />
+        {/* STATUE — wrapper sized in CSS; Image uses fill to avoid Next.js width/height mismatch warnings */}
+        <div
+          className="statue-image absolute bottom-0 right-0 z-30 h-155.5 w-[min(100%,645px)] xl:w-138.5 xl:h-129.25 xl:-right-22.5 2xl:w-161.25"
+        >
+          <Image
+            src="/images/brandingImage/statue.png"
+            alt="statue"
+            fill
+            sizes="(max-width: 1279px) 645px, (max-width: 1535px) 554px, 645px"
+            className="object-contain object-bottom"
+            priority
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import Footer from "@/components/common/Footer";
 import MarqueeBanner from "@/components/common/MarqueeBanner";
 import About from "@/components/ui/homepage/About";
 import Connect from "@/components/ui/homepage/Connect";
@@ -15,12 +16,15 @@ export default function Home() {
       <MarqueeBanner />
       <Service />
       <HorizontalScrollSection />
-      <Design />
-      <About />
+      <div className="relative">
+        <Design />
+        <About />
+      </div>
       <Faq />
       <Pricing />
 
       <Connect />
+      <Footer />
     </div>
   );
 }

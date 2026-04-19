@@ -103,13 +103,30 @@ export default function About() {
   return (
     <section
       ref={ref}
-      className="about-bg relative overflow-hidden min-h-259.5 text-center z-0"
+      className="about-bg relative overflow-hidden text-center z-0 gradient-bg"
       style={{
         backgroundImage: "url('/images/about-bg.png')",
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "top center",
         backgroundRepeat: "no-repeat",
+
+        marginTop: "-566px",
+        paddingTop: "320px",
+        minHeight: "1100px",
+        width: "100%",
       }}
+
+      //  className="gradient-bg"
+      //   style={{
+      //     backgroundColor: "#ffffff",
+      //     backgroundImage: `repeating-linear-gradient(
+      //     to right,
+      //     rgb(255 254 254 / 0%),
+      //     rgb(219 219 219 / 55%) 54%,
+      //     rgb(255 255 255 / 5%) 103%
+      //   )`,
+      //     backgroundSize: "59px 2%",
+      //   }}
     >
       <img
         src="./images/about.png"
@@ -117,7 +134,7 @@ export default function About() {
       />
 
       {/* ABOUT */}
-      <div className="xl:mt-107 2xl:mt-105">
+      <div className="xl:mt-43 2xl:mt-43">
         <h2 className="g-title text-3xl md:text-[45px] font-semibold text-primary mb-3">
           About Us
         </h2>

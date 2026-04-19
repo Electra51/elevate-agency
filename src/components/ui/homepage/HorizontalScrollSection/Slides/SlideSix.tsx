@@ -54,13 +54,15 @@ export default function SlideSix() {
         {/* <div className=" slide-visual absolute top-1/2 left-1/2 xl:top-[69%] xl:left-[58%] w-94.25 h-92 bg-white rounded-full blur-3xl opacity-70 -translate-x-1/2 -translate-y-1/2 z-10" /> */}
 
         {/* STATUE */}
-        <Image
-          src="/images/brandingImage/statue6.svg"
-          alt="statue"
-          width={645}
-          height={622}
-          className="statue-image absolute bottom-0 xl:right-26 xl:bottom-14 2xl:bottom-66 2xl:right-68 z-30"
-        />
+        <div className="statue-image absolute bottom-0 xl:right-26 xl:bottom-14 2xl:bottom-66 2xl:right-68 z-30 aspect-[645/622] w-[min(100%,645px)] max-w-[645px]">
+          <Image
+            src="/images/brandingImage/statue6.svg"
+            alt="statue"
+            fill
+            sizes="645px"
+            className="object-contain object-bottom"
+          />
+        </div>
       </div>
     </div>
   );
