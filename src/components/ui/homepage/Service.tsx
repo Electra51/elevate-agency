@@ -82,10 +82,10 @@ const Service = () => {
 
               {/* text content */}
               <div className="absolute bottom-0 left-0 p-5 z-10">
-                <h3 className="text-white text-lg font-semibold tracking-wide">
+                <h3 className="text-white text-lg sm:text-xl lg:text-[26px] font-semibold tracking-wide">
                   {item.title}
                 </h3>
-                <p className="text-white/70 text-sm mt-1 max-w-55">
+                <p className="text-white/70 text-sm sm:text-[15px]] mt-1 max-w-55">
                   Elevating brands with creativity and strategy
                 </p>
               </div>

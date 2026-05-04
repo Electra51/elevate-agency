@@ -1,17 +1,15 @@
-import MarqueeBanner from "@/components/common/MarqueeBanner";
+import Footer from "@/components/common/Footer";
 import BlogSection from "@/components/ui/OurStoryPage/BlogSection";
 import CustomerTestimonial from "@/components/ui/OurStoryPage/CustomerTestimonial";
 import Hero from "@/components/ui/OurStoryPage/Hero";
 import HowWeWork from "@/components/ui/OurStoryPage/HowWeWork";
 import Philosophy from "@/components/ui/OurStoryPage/Philosophy";
-import StoryProcessBanner from "@/components/ui/OurStoryPage/StoryProcessBanner";
 import UnfairAdvantage from "@/components/ui/OurStoryPage/Unfairadvantage";
 
 const page = () => {
   return (
     <div>
       <Hero />
-      <MarqueeBanner />
 
       <div
         className="gradient-bg"
@@ -31,9 +29,9 @@ const page = () => {
         <Philosophy />
         <UnfairAdvantage />
         <BlogSection />
+        <CustomerTestimonial />
+        <Footer />
       </div>
-      <CustomerTestimonial />
-      <StoryProcessBanner />
     </div>
   );
 };

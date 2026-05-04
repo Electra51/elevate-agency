@@ -1,6 +1,5 @@
 "use client";
 
-import MarqueeBannerStatic from "@/components/common/MarqueeBannerStatic";
 import { ArrowRight } from "lucide-react";
 
 export default function Connect() {
@@ -37,7 +36,6 @@ export default function Connect() {
           </div>
         </div>
       </section>
-      <MarqueeBannerStatic />
     </div>
   );
 }

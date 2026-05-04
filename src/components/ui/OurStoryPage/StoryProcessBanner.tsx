@@ -13,7 +13,7 @@ const Star = () => (
   </svg>
 );
 
-const segments = ["Development", "Ui Ux Wireframe", "Testing & Optimization"];
+const segments = ["Design & Development", "Ui Ux Wireframe", "Testing & Optimization"];
 
 export default function StoryProcessBanner() {
   return (

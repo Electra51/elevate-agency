@@ -1,7 +1,9 @@
 "use client";
 
-import MarqueeBannerStatic from "@/components/common/MarqueeBannerStatic";
-
+import FooterCrossMarquee from "@/components/common/FooterCrossMarquee";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
 const plans = [
   {
     name: "Standard",
@@ -65,15 +67,6 @@ const plans = [
   },
 ];
 
-const marqueeItems = [
-  "Design & Development",
-  "Meticulous Detail",
-  "Discovery & Strategy",
-  "Design & Development",
-  "Meticulous Detail",
-  "Discovery & Strategy",
-];
-
 const CheckIcon = ({ white }: { white?: boolean }) => (
   <svg
     width="16"
@@ -99,17 +92,105 @@ const CheckIcon = ({ white }: { white?: boolean }) => (
   </svg>
 );
 
+const regularCardClass =
+  "pricing-card group relative z-0 bg-[#F4F3F8] rounded-2xl px-6 pt-5 pb-7 cursor-default " +
+  "transition-all duration-300 ease-out motion-reduce:transition-none " +
+  "hover:z-10 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/20 " +
+  "md:hover:-translate-y-4";
+
+const regularCardButtonClass =
+  "w-full border border-gray-300 text-gray-700 font-medium text-sm py-2.5 rounded-full " +
+  "transition-all duration-300 ease-out motion-reduce:transition-none md:text-[15px] " +
+  "group-hover:border-primary group-hover:text-primary group-hover:bg-white " +
+  "group-hover:shadow-sm";
+
 export default function Pricing() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+        defaults: { ease: "power3.out" },
+      });
+
+      gsap.set([".pricing-title", ".pricing-sub"], {
+        transformOrigin: "center center",
+      });
+
+      tl.from(".pricing-title", {
+        scale: 0.78,
+        opacity: 0,
+        y: 28,
+        duration: 0.75,
+        ease: "power3.out",
+        immediateRender: false,
+      }).from(
+        ".pricing-sub",
+        {
+          scale: 0.86,
+          opacity: 0,
+          y: 16,
+          duration: 0.55,
+          ease: "power2.out",
+          immediateRender: false,
+        },
+        "-=0.38",
+      )
+        .from(
+          ".pricing-card",
+          {
+            y: 60,
+            opacity: 0,
+            scale: 0.94,
+            filter: "blur(8px)",
+            duration: 0.7,
+            stagger: 0.12,
+            ease: "power3.out",
+            immediateRender: false,
+          },
+          "-=0.3",
+        )
+        .from(
+          ".pricing-featured",
+          {
+            scale: 0.9,
+            duration: 0.5,
+            ease: "back.out(1.8)",
+            immediateRender: false,
+          },
+          "-=0.7",
+        )
+        .from(
+          ".pricing-marquee",
+          {
+            opacity: 0,
+            y: 20,
+            duration: 0.5,
+            immediateRender: false,
+          },
+          "-=0.2",
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
   return (
-    <div>
+    <div ref={sectionRef} className="relative">
       <div className="bg-white flex flex-col w-full">
         <div className="md:max-w-5xl lg:max-w-6xl xl:max-w-7xl items-center justify-between px-8 md:px-20 lg:px-20 xl:px-5 pt-4 mx-auto">
           {/* Header */}
           <div className="text-center pt-16 pb-10">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+            <h1 className="pricing-title text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
               Simple, transparent pricing
             </h1>
-            <p className="text-gray-400 mt-2 text-sm">
+            <p className="pricing-sub  text-gray-400 mt-2 text-sm">
               No contracts. No surprise fees.
             </p>
           </div>
@@ -122,7 +203,7 @@ export default function Pricing() {
                   /* ── Featured Card ── */
                   <div
                     key={plan.name}
-                    className="text-3xl md:text-[40px] relative rounded-2xl bg-primary text-white px-6 pb-8 mb-0 md:mb-0 md:-translate-y-4 shadow-xl"
+                    className="pricing-featured group text-3xl md:text-[40px] relative rounded-2xl bg-primary text-white px-6 pb-8 mb-0 md:mb-0 md:-translate-y-4 shadow-xl transition-all duration-300 ease-out motion-reduce:transition-none hover:-translate-y-5 hover:shadow-2xl"
                   >
                     {/* Badge */}
                     <div className="absolute top-2 right-4">
@@ -152,16 +233,16 @@ export default function Pricing() {
                       ))}
                     </ul>
 
-                    <button className="w-full bg-white text-primary font-semibold text-sm md:text-[15px] py-2.5 rounded-full hover:bg-white/90 transition-colors">
+                    <button
+                      type="button"
+                      className="w-full bg-white text-primary font-semibold text-sm md:text-[15px] py-2.5 rounded-full transition-all duration-300 hover:bg-white/90 hover:shadow-md active:scale-[0.98]"
+                    >
                       Choose plan
                     </button>
                   </div>
                 ) : (
                   /* ── Regular Card ── */
-                  <div
-                    key={plan.name}
-                    className="bg-[#F4F3F8] rounded-2xl px-6 pt-5 pb-7"
-                  >
+                  <div key={plan.name} className={regularCardClass}>
                     {/* Price */}
                     <div className="mb-6">
                       <span className="text-3xl md:text-[40px] text-gray-900">
@@ -192,7 +273,10 @@ export default function Pricing() {
                       ))}
                     </ul>
 
-                    <button className="w-full border border-gray-300 text-gray-700 font-medium text-sm py-2.5 rounded-full hover:bg-gray-200 transition-colors md:text-[15px]">
+                    <button
+                      type="button"
+                      className={regularCardButtonClass}
+                    >
                       Choose plan
                     </button>
                   </div>
@@ -202,7 +286,9 @@ export default function Pricing() {
           </div>
         </div>
       </div>
-      <MarqueeBannerStatic />
+      <div className="pricing-marquee relative h-24 overflow-x-clip">
+        <FooterCrossMarquee inline />
+      </div>
     </div>
   );
 }

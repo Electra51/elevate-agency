@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function SlideTwo() {
   return (
-    <div className="relative w-screen h-screen flex bg-linear-to-br from-[#713FE7] to-[#370ECD] overflow-hidden">
+    <div className="relative w-screen h-screen flex bg-linear-to-br from-[#713FE7] to-[#370ECD] overflow-hidden md:px-14 xl:px-0">
       {/* VECTOR LINE */}
       <Image
         src="/images/brandingImage/Vector2.svg"
@@ -25,13 +25,13 @@ export default function SlideTwo() {
 
       {/* LEFT */}
       <div className="w-1/2 flex flex-col justify-center 2xl:pl-87.5 xl:pl-28 text-white z-10">
-        <h1 className="slide-title text-[64px] font-bold leading-tight mb-6">
+        <h1 className="slide-title text-[64px] font-bold leading-14 mb-6 -mt-52 pl-4">
           Discovery & <br /> Strategy
         </h1>
 
-        <div className="slide-desc flex gap-4 max-w-130">
-          <div className="w-3 bg-white mt-2"></div>
-          <p className="text-lg text-white/90">
+        <div className="slide-desc flex gap-4 max-w-130 mt-12">
+          <div className="w-3 bg-[#D9D9D9] mt-2"></div>
+          <p className="text-lg xl:text-xl text-white">
             First impressions dictate the journey. We build a scroll-stopping
             digital storefront across your website and social channels to ensure
             your brand looks the part before anyone even clicks.
@@ -54,7 +54,7 @@ export default function SlideTwo() {
         <div className="slide-visual absolute top-1/2 left-1/2 xl:top-[69%] xl:left-[58%] w-94.25 h-92 bg-blue-400 rounded-full blur-3xl opacity-70 -translate-x-1/2 -translate-y-1/2 z-10" />
 
         {/* STATUE */}
-        <div className="statue-image absolute bottom-0 right-31 z-30 2xl:bottom-32 aspect-[645/622] w-[min(100%,645px)] max-w-[645px]">
+        <div className="statue-image absolute bottom-0 right-31 z-30 2xl:bottom-45 2xl:right-48 aspect-645/622 w-[min(100%,645px)] max-w-161.25">
           <Image
             src="/images/brandingImage/statue2.svg"
             alt="statue"

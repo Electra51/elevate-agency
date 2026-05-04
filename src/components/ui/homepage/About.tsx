@@ -19,36 +19,49 @@ export default function About() {
         },
       });
 
-      //  About Us (bottom → up)
+      // About heading block: large-text slide + fade + pop
       tl.from(".g-title", {
-        y: 80,
+        y: 95,
         opacity: 0,
-        duration: 1,
-        ease: "power3.out",
+        scale: 0.65,
+        duration: 0.72,
+        ease: "back.out(2.05)",
       })
-
-        //  Description (left → right)
         .from(
           ".g-desc",
           {
-            x: -100,
+            x: -120,
+            y: 34,
             opacity: 0,
-            duration: 1,
-            ease: "power3.out",
+            scale: 0.86,
+            duration: 0.58,
+            ease: "power4.out",
           },
-          "-=0.6",
+          "-=0.4",
         )
-
-        //  Expectations (draw feel)
         .from(
           ".g-sign",
           {
-            x: -120,
+            y: 80,
+            x: -80,
             opacity: 0,
-            duration: 1.2,
-            ease: "expo.out",
+            scale: 0.5,
+            rotate: -4,
+            duration: 0.74,
+            ease: "back.out(2.25)",
           },
-          "-=0.7",
+          "-=0.46",
+        )
+        .to(
+          ".g-sign",
+          {
+            scale: 1.06,
+            duration: 0.14,
+            yoyo: true,
+            repeat: 1,
+            ease: "power1.inOut",
+          },
+          "-=0.2",
         );
 
       // SVG LINE DRAW ANIMATION
@@ -110,27 +123,15 @@ export default function About() {
         backgroundPosition: "top center",
         backgroundRepeat: "no-repeat",
 
-        marginTop: "-566px",
+        marginTop: "-499px",
         paddingTop: "320px",
         minHeight: "1100px",
         width: "100%",
       }}
-
-      //  className="gradient-bg"
-      //   style={{
-      //     backgroundColor: "#ffffff",
-      //     backgroundImage: `repeating-linear-gradient(
-      //     to right,
-      //     rgb(255 254 254 / 0%),
-      //     rgb(219 219 219 / 55%) 54%,
-      //     rgb(255 255 255 / 5%) 103%
-      //   )`,
-      //     backgroundSize: "59px 2%",
-      //   }}
     >
       <img
         src="./images/about.png"
-        className="absolute xl:bottom-0 xl:right-0 2xl:bottom-0 2xl:right-0 z-20"
+        className="absolute bottom-0 right-0 xl:bottom-0 xl:right-0 2xl:bottom-0 2xl:right-0 z-20"
       />
 
       {/* ABOUT */}

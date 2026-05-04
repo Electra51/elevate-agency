@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
 import Navbar from "@/components/common/Navbar";
+import Preloader from "@/components/common/Preloader";
+import type { Metadata } from "next";
 import { amilly, clashDisplay } from "./fonts";
 import "./globals.css";
 
@@ -19,6 +20,7 @@ export default function RootLayout({
       className={`${clashDisplay.variable} ${amilly.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <Preloader />
         <Navbar />
         <main className="flex-1">{children}</main>
       </body>

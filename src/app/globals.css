@@ -14,6 +14,16 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Footer marquee: seamless loop (track is 2× duplicated content) */
+@keyframes footer-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .text-gradient {
   @apply bg-clip-text text-transparent;
   -webkit-background-clip: text;
@@ -33,7 +43,7 @@ body {
   z-index: 10;
   width: calc(100vw + 2 * var(--v-offset));
   height: var(--curve-height);
-  background: white;
+  /* background: white; */
   border-radius: 45%;
   top: calc(-0.7 * var(--curve-height));
   left: calc(-1 * var(--v-offset));
@@ -52,22 +62,35 @@ body {
   left: calc(-1 * var(--v-offset));
 }
 
-/* align slides center */
-/* .swiper-wrapper {
-  display: flex;
-  align-items: center;
+/* .new {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 } */
 
-/* .slider-track > div {
-  transform-origin: center bottom;
-} */
+.gradient-border {
+  padding: 1px; /* border thickness */
+  border-radius: 13px;
+  background: linear-gradient(13deg, rgba(255, 255, 255, 0.68), #601ff959);
+}
 
-/* .gradient-bg {
-  background: repeating-linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.05) 0% — white 5%,
-    rgba(40, 40, 40, 0.62) 67% — #282828 62%,
-    rgba(255, 255, 255, 0.05) 100% — white 5%
-  );
-  background-size: 60px 100%; controls stripe width
-} */
+.glass-card {
+  border-radius: 13px;
+  background: #ffffff00;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px) !important;
+
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+header,
+#mobile-drawer,
+nav a {
+  will-change: transform, opacity, filter;
+}
+.hero {
+  min-height: 80vh;
+}

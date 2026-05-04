@@ -3,7 +3,9 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLayoutEffect, useRef } from "react";
+import SplitType from "split-type";
 
+import MobileSlides from "./MobileSlides";
 import SlideFive from "./Slides/SlideFive";
 import SlideFour from "./Slides/SlideFour";
 import SlideOne from "./Slides/SlideOne";
@@ -18,7 +20,10 @@ export default function HorizontalScrollSection() {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
+    // Desktop only — horizontal scroll needs a wide viewport
+    if (window.innerWidth < 1024) return;
+
+    const ctx = gsap.context((gsapContext) => {
       const section = sectionRef.current;
       const slider = sliderRef.current;
 
@@ -46,7 +51,7 @@ export default function HorizontalScrollSection() {
       // Scoped slides (IMPORTANT FIX)
       const slides = gsap.utils.toArray<HTMLElement>(".w-screen", section);
 
-      slides.forEach((slide) => {
+      slides.forEach((slide, slideIndex) => {
         const title = slide.querySelector(".slide-title");
         const desc = slide.querySelector(".slide-desc");
         const visual = slide.querySelector(".slide-visual");
@@ -86,7 +91,7 @@ export default function HorizontalScrollSection() {
         //  VECTOR IMAGE ANIMATION (clip-path drawing)
         // ---------------------------
         const vectorImg = slide.querySelector("img[alt='vector']");
-        if (vectorImg) {
+        if (vectorImg && !vectorImg.classList.contains("vector-static")) {
           gsap.set(vectorImg, { clipPath: "inset(0 100% 0 0)" });
 
           gsap.to(vectorImg, {
@@ -180,45 +185,144 @@ export default function HorizontalScrollSection() {
         // ---------------------------
         //  Text animation
         // ---------------------------
-        gsap.set([title, desc], { y: 100, opacity: 0 });
+        const descTextEl = slide.querySelector(
+          ".slide-desc-text",
+        ) as HTMLElement | null;
+        const descBar = slide.querySelector(".slide-desc-bar");
 
-        const tlText = gsap.timeline({
-          scrollTrigger: {
-            trigger: slide,
-            containerAnimation: horizontalAnim,
-            start: "left center",
-            end: "right center",
-            scrub: 1,
-          },
-        });
+        if (slideIndex === 0 && descTextEl) {
+          const titleSplit = new SplitType(title as HTMLElement, {
+            types: "lines,words",
+          });
+          const descSplit = new SplitType(descTextEl, {
+            types: "lines",
+          });
 
-        tlText
-          .to(title, {
+          gsapContext.add(() => {
+            titleSplit.revert();
+            descSplit.revert();
+          });
+
+          const titleWordsRaw = titleSplit.words;
+          const titleLinesRaw = titleSplit.lines;
+          const descLinesRaw = descSplit.lines;
+
+          const titleWords = Array.from(
+            Array.isArray(titleWordsRaw) && titleWordsRaw.length > 0
+              ? titleWordsRaw
+              : Array.isArray(titleLinesRaw)
+                ? titleLinesRaw
+                : [],
+          );
+          const descLines = Array.from(
+            Array.isArray(descLinesRaw) ? descLinesRaw : [],
+          );
+
+          gsap.set(titleWords, { y: 22, opacity: 0 });
+          gsap.set(descLines, { yPercent: 108, opacity: 0 });
+          if (descBar) {
+            gsap.set(descBar, {
+              scaleY: 0,
+              transformOrigin: "top center",
+              opacity: 0,
+            });
+          }
+
+          const tlTextSlideOne = gsap.timeline({
+            scrollTrigger: {
+              trigger: slide,
+              containerAnimation: horizontalAnim,
+              start: "left center",
+              end: "right center",
+              scrub: 1,
+            },
+          });
+
+          tlTextSlideOne.to(titleWords, {
             y: 0,
             opacity: 1,
-            duration: 0.6,
+            stagger: { each: 0.028 },
+            duration: 0.38,
             ease: "power4.out",
-          })
-          .to(
-            desc,
+          });
+          if (descBar) {
+            tlTextSlideOne.to(
+              descBar,
+              {
+                scaleY: 1,
+                opacity: 1,
+                duration: 0.32,
+                ease: "power2.out",
+              },
+              "-=0.12",
+            );
+          }
+          tlTextSlideOne.to(
+            descLines,
             {
+              yPercent: 0,
+              opacity: 1,
+              stagger: { each: 0.055 },
+              duration: 0.42,
+              ease: "power3.out",
+            },
+            descBar ? "-=0.22" : "-=0.1",
+          );
+          const exitTargets = titleWords.concat(descLines);
+          if (exitTargets.length > 0) {
+            tlTextSlideOne.to(
+              exitTargets,
+              {
+                y: -44,
+                opacity: 0,
+                stagger: { each: 0.018 },
+                duration: 0.32,
+                ease: "power2.in",
+              },
+              "+=0.14",
+            );
+          }
+        } else {
+          gsap.set([title, desc], { y: 100, opacity: 0 });
+
+          const tlText = gsap.timeline({
+            scrollTrigger: {
+              trigger: slide,
+              containerAnimation: horizontalAnim,
+              start: "left center",
+              end: "right center",
+              scrub: 1,
+            },
+          });
+
+          tlText
+            .to(title, {
               y: 0,
               opacity: 1,
               duration: 0.6,
-              ease: "power3.out",
-            },
-            "-=0.3",
-          )
-          .to(
-            [title, desc],
-            {
-              y: -80,
-              opacity: 0,
-              duration: 0.5,
-              ease: "power2.in",
-            },
-            "+=0.2",
-          );
+              ease: "power4.out",
+            })
+            .to(
+              desc,
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.6,
+                ease: "power3.out",
+              },
+              "-=0.3",
+            )
+            .to(
+              [title, desc],
+              {
+                y: -80,
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.in",
+              },
+              "+=0.2",
+            );
+        }
 
         // ---------------------------
         //  Visual scale animation
@@ -262,19 +366,28 @@ export default function HorizontalScrollSection() {
 
     return () => ctx.revert();
   }, []);
+
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full h-[90%] overflow-hidden mt-18"
-    >
-      <div ref={sliderRef} className="flex w-max will-change-transform">
-        <SlideOne />
-        <SlideTwo />
-        <SlideThree />
-        <SlideFour />
-        <SlideFive />
-        <SlideSix />
+    <>
+      {/* ── Mobile / Tablet (< lg) — vertical cards ─────────────────── */}
+      <div className="lg:hidden w-full mt-10 sm:mt-14">
+        <MobileSlides />
       </div>
-    </section>
+
+      {/* ── Desktop (lg+) — original horizontal scroll ───────────────── */}
+      <section
+        ref={sectionRef}
+        className="hidden lg:block relative w-full h-[90%] overflow-hidden mt-18"
+      >
+        <div ref={sliderRef} className="flex w-max will-change-transform">
+          <SlideOne />
+          <SlideTwo />
+          <SlideThree />
+          <SlideFour />
+          <SlideFive />
+          <SlideSix />
+        </div>
+      </section>
+    </>
   );
 }

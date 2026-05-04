@@ -28,7 +28,7 @@ const Star = () => (
 
 export default function MarqueeBannerStatic() {
   return (
-    <div className="w-full relative h-17.5 md:h-22.5 flex items-center justify-center overflow-visible overflow-x-clip z-20 -my-9">
+    <div className="w-full relative h-17.5 md:h-22.5 flex items-center justify-center overflow-x-clip z-20 -my-9">
       {/* CURVED ARROW */}
       <div className="absolute top-6 left-1/2 -translate-x-1/2">
         <svg
@@ -57,7 +57,7 @@ export default function MarqueeBannerStatic() {
         </svg>
       </div>
       <div
-        className="absolute left-1/2 -translate-x-1/2  bg-[#3B0ECA] py-3.5 md:py-4 flex overflow-hidden shadow-2xl border-y border-indigo-400"
+        className="absolute -left-105.75 -translate-x-1/2  bg-[#3B0ECA] py-3.5 md:py-4 flex overflow-hidden shadow-2xl border-y border-indigo-400"
         style={{ transform: "rotate(-2deg)" }}
       >
         <div className="flex w-max gap-8 px-6 justify-center">
